@@ -69,3 +69,5 @@ gem 'rubocop-rails', '~> 2.23'
 gem 'rubocop-rspec', '~> 2.26'
 
 gem 'rubocop-performance', '~> 1.20'
+
+gem "google-apis-sheets_v4", "~> 0.27.0"
