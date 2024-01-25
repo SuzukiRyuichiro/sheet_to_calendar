@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_at: 2024-01-25 16:38:55
+  end_at: 2024-01-25 16:38:55
+  type: 
+  staff: one
+
+two:
+  start_at: 2024-01-25 16:38:55
+  end_at: 2024-01-25 16:38:55
+  type: 
+  staff: two

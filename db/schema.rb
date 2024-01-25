@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 20_240_125_073_233) do
+ActiveRecord::Schema[7.1].define(version: 20_240_125_073_855) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -22,10 +22,22 @@ ActiveRecord::Schema[7.1].define(version: 20_240_125_073_233) do
     t.datetime 'updated_at', null: false
   end
 
+  create_table 'shifts', force: :cascade do |t|
+    t.datetime 'start_at'
+    t.datetime 'end_at'
+    t.string 'type'
+    t.bigint 'staff_id', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['staff_id'], name: 'index_shifts_on_staff_id'
+  end
+
   create_table 'staffs', force: :cascade do |t|
     t.string 'name'
     t.string 'slug'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
   end
+
+  add_foreign_key 'shifts', 'staffs'
 end

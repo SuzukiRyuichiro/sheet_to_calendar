@@ -1,0 +1,72 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - "bin/**/*"
+    - "db/schema.rb"
+    - "db/migrate/*"
+    # - 'config/**/*'
+    - "node_modules/**/*"
+    - "script/**/*"
+    - "support/**/*"
+    - "tmp/**/*"
+    - "test/**/*"
+    # - 'spec/**/*'
+    - "coverage/**/*"
+Style/AsciiComments:
+  Enabled: false
+Style/ConditionalAssignment:
+  Enabled: true
+Style/StringLiterals:
+  Enabled: true
+Style/RedundantReturn:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/WordArray:
+  Enabled: true
+Metrics/AbcSize:
+  Enabled: false
+Style/MutableConstant:
+  Enabled: true
+Style/SignalException:
+  Enabled: true
+Metrics/CyclomaticComplexity:
+  Enabled: true
+Lint/MissingSuper:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: true
+Layout/LineLength:
+  Max: 120
+Style/EmptyMethod:
+  Enabled: true
+Bundler/OrderedGems:
+  Enabled: false
+Metrics/BlockLength:
+  CountAsOne:
+    - array
+    - hash
+    - heredoc
+  IgnoredMethods: ["describe", "context"]
+Metrics/ClassLength:
+  CountAsOne:
+    - array
+    - hash
+    - heredoc
+Metrics/MethodLength:
+  Enabled: false
+  CountAsOne:
+    - array
+    - hash
+    - heredoc
+Metrics/ModuleLength:
+  CountAsOne:
+    - array
+    - hash
+    - heredoc
+RSpec/MultipleMemoizedHelpers:
+  Max: 6

@@ -63,3 +63,9 @@ group :test do
 end
 
 gem 'rubocop', '~> 1.60'
+
+gem 'rubocop-rails', '~> 2.23'
+
+gem 'rubocop-rspec', '~> 2.26'
+
+gem 'rubocop-performance', '~> 1.20'
