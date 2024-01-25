@@ -1,12 +1,4 @@
 class Shift < ApplicationRecord
   belongs_to :staff
-  # belongs_to :location
-
-  enum type: {
-    mid: :mid,
-    fst: :fst,
-    ama: :ama,
-    apm: :apm,
-    or: :or
-  }, _suffix: :shift
+  belongs_to :shift_type
 end

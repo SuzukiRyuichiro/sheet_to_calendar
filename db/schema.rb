@@ -10,34 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 20_240_125_073_855) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_25_091405) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'locations', force: :cascade do |t|
-    t.string 'name'
-    t.string 'address'
-    t.string 'map_url'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "locations", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "map_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'shifts', force: :cascade do |t|
-    t.datetime 'start_at'
-    t.datetime 'end_at'
-    t.string 'type'
-    t.bigint 'staff_id', null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['staff_id'], name: 'index_shifts_on_staff_id'
+  create_table "shift_types", force: :cascade do |t|
+    t.string "start_at"
+    t.string "end_at"
+    t.string "acronym"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'staffs', force: :cascade do |t|
-    t.string 'name'
-    t.string 'slug'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "shifts", force: :cascade do |t|
+    t.datetime "adjusted_start_at"
+    t.datetime "adjusted_end_at"
+    t.bigint "staff_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "shift_type_id", null: false
+    t.index ["shift_type_id"], name: "index_shifts_on_shift_type_id"
+    t.index ["staff_id"], name: "index_shifts_on_staff_id"
   end
 
-  add_foreign_key 'shifts', 'staffs'
+  create_table "staffs", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "shifts", "shift_types"
+  add_foreign_key "shifts", "staffs"
 end
