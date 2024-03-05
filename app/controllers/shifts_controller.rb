@@ -2,7 +2,7 @@
 
 class ShiftsController < ApplicationController
   def index
-    staff = Staff.find_by!(slug: params[:slug])
+    staff = Staff.includes(shifts: :shift_type).find_by!(slug: params[:slug])
     @shifts = staff.shifts
 
     cal = CalendarService.new(@shifts).call
