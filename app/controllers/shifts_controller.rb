@@ -1,8 +1,8 @@
 class ShiftsController < ApplicationController
   def index
-    staff = Staff.find_by_slug params[:slug]
+    staff = Staff.find_by(slug: params[:slug])
 
-    shifts = staff.shifts
+    @shifts = staff.shifts
   end
 
   def import; end
