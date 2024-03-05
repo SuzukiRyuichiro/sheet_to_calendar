@@ -1,0 +1,10 @@
+<p>Please paste the link to the calendar spreadsheet</p>
+<%= form_with(url: '/import', method: :post) do |form| %>
+  <%= form.label :year, 'Year' %>
+  <%= form.select :year, options_for_select((Time.zone.now.year..Time.zone.now.year+1).to_a, selected: Time.zone.now.year) %>
+  <%= form.label :month, 'Month' %>
+  <%= form.select :month, options_for_select(Date::MONTHNAMES.compact.each_with_index.map { |name, i| [name, i+1] }, selected: Time.zone.now.month) %>
+  <%= form.label :spreadsheet_link, 'Spreadsheet Link' %>
+  <%= form.text_field :spreadsheet_link, placeholder: 'Paste your spreadsheet link here' %>
+  <%= form.submit 'Submit' %>
+<% end %>

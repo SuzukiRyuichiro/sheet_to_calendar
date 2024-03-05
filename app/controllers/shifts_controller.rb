@@ -4,4 +4,6 @@ class ShiftsController < ApplicationController
 
     shifts = staff.shifts
   end
+
+  def import; end
 end
