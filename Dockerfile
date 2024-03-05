@@ -19,7 +19,8 @@ FROM base as build
 
 # Install packages needed to build gems
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential git pkg-config libpq-dev
+    apt-get install --no-install-recommends -y build-essential git pkg-config libpq-dev && \
+    apt-get clean
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
@@ -42,7 +43,7 @@ FROM base
 
 # Install packages needed for deployment
 RUN apt-get update -qq && \
-    apt-get install -y build-essential libpq-dev && \
+    apt-get install -y build-essential libvips && \
     apt-get install --no-install-recommends -y curl libsqlite3-0 && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
